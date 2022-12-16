@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/ SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://mave n.apache.org/xsd/settings-1.0.0.xsd">
+	<servers>
+        <server>
+            <id>snapshots</id>
+            <username>gddeployer</username>
+            <password>gddeployer</password>
+       </server>
+       <server>
+            <id>releases</id>
+            <username>gddeployer</username>
+            <password>gddeployer</password>
+       </server>
+       <server>
+             <id>datahub</id>
+             <username>gddeployer</username>
+             <password>gddeployer</password>
+       </server>
+		
+	</servers>
+	
+	<profiles>
+        <profile>
+            <id>bose-profile-definition</id>
+            <!-- This profile is used by every other profile used to install AEM or Hybris -->
+            <properties>
+                <!-- ******** AEM version  ******** -->
+                <aem.uber.jar.version>6.5.13</aem.uber.jar.version>
+                <!-- ******** AEM - Author ******** -->
+                <crx.host>127.0.0.1</crx.host>
+                <crx.port>4502</crx.port>
+                <crx.username>admin</crx.username>
+                <crx.password>admin</crx.password>
+                 
+                <!-- ******** AEM - Publish ******** -->
+                <publish.crx.host>127.0.0.1</publish.crx.host>
+                <publish.crx.port>4503</publish.crx.port>
+                <publish.crx.username>admin</publish.crx.username>
+                <publish.crx.password>admin</publish.crx.password>
+                 
+                <!-- ******** HYBRIS ******** -->
+                <remoteServer>127.0.0.1</remoteServer>
+                <sshExe>/usr/bin/ssh</sshExe>
+                <certPath>/home/developer/certificate</certPath>
+                <tmpDir>/var/chef/cache</tmpDir>
+                <hybris.path>/opt</hybris.path>
+ 
+                <!-- ******** DataHub ******** -->
+                <datahub.host>127.0.0.1</datahub.host>
+                <datahub.port>9080</datahub.port>
+            </properties>
+            <repositories>
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>public</id>
+                    <name>Public Repository</name>
+                    <url>https://nexus.gd.bose.com/repository/public/</url>
+                </repository>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>releases</id>
+                    <name>Releases</name>
+                    <url>https://nexus.gd.bose.com/repository/releases/</url>
+                </repository>
+                <repository>
+                    <snapshots/>
+                    <id>snapshots</id>
+                    <name>Snapshots</name>
+                    <url>https://nexus.gd.bose.com/repository/snapshots/</url>
+                </repository>
+            </repositories>
+        </profile>
+		
+	</profiles>
+     
+    <activeProfiles>
+        <activeProfile>bose-profile-definition</activeProfile>
+    </activeProfiles>
+	
+</settings>
